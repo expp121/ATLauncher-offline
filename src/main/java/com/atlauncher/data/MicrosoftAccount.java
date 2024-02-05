@@ -80,9 +80,9 @@ public class MicrosoftAccount extends AbstractAccount {
         this.oauthToken = oauthTokenResponse;
         this.xstsAuth = xstsAuthResponse;
         this.accessToken = loginResponse.accessToken;
-        this.minecraftUsername = "Mitanko";
+        this.minecraftUsername = "CHANGE_ME";
         this.uuid = UUID.randomUUID().toString();
-        this.username = "Mitanko";
+        this.username = "CHANGE_ME";
         this.mustLogin = false;
 
         this.accessTokenExpiresAt = new Date();

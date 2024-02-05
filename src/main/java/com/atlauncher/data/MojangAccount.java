@@ -77,7 +77,7 @@ public class MojangAccount extends AbstractAccount {
 
     public MojangAccount(String username, String password, LoginResponse response, Boolean remember,
             String clientToken) {
-        this(username, password, "Mitanko",
+        this(username, password, username,
             UUID.randomUUID().toString(), remember, clientToken,
                 response.getAuth().saveForStorage());
     }
