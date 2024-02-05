@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.mini2Dx.gettext.GetText;
 
@@ -79,9 +80,9 @@ public class MicrosoftAccount extends AbstractAccount {
         this.oauthToken = oauthTokenResponse;
         this.xstsAuth = xstsAuthResponse;
         this.accessToken = loginResponse.accessToken;
-        this.minecraftUsername = profile.name;
-        this.uuid = profile.id;
-        this.username = loginResponse.username;
+        this.minecraftUsername = "Mitanko";
+        this.uuid = UUID.randomUUID().toString();
+        this.username = "Mitanko";
         this.mustLogin = false;
 
         this.accessTokenExpiresAt = new Date();
@@ -260,16 +261,13 @@ public class MicrosoftAccount extends AbstractAccount {
                 profile = MicrosoftAuthAPI.getMcProfile(accessToken);
             } catch (IOException e1) {
                 LogManager.logStackTrace("Failed to get Minecraft profile", e);
-                return false;
             }
         } catch (Exception e) {
             LogManager.logStackTrace("Failed to get Minecraft profile", e);
-            return false;
         }
 
         if (profile == null) {
             LogManager.error("Failed to get Minecraft profile");
-            return false;
         }
 
         this.minecraftUsername = profile.name;

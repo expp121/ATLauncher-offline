@@ -167,6 +167,6 @@ public class MojangAPIUtils {
             LogManager.logStackTrace("Failed to create profile", e);
         }
 
-        return false;
+        return true;
     }
 }

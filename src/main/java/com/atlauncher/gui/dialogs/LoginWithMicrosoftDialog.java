@@ -256,15 +256,6 @@ public final class LoginWithMicrosoftDialog extends JDialog {
 
         Entitlements entitlements = MicrosoftAuthAPI.getEntitlements(loginResponse.accessToken);
 
-        if (!(entitlements.items.stream().anyMatch(i -> i.name.equalsIgnoreCase("product_minecraft"))
-                && entitlements.items.stream().anyMatch(i -> i.name.equalsIgnoreCase("game_minecraft")))) {
-            DialogManager.okDialog().setTitle(GetText.tr("Minecraft Has Not Been Purchased"))
-                    .setContent(new HTMLBuilder().center().text(GetText.tr(
-                            "This account doesn't have a valid purchase of Minecraft.<br/><br/>Please make sure you've bought the Java edition of Minecraft and then try again."))
-                            .build())
-                    .setType(DialogManager.ERROR).show();
-            throw new Exception("Account does not own Minecraft");
-        }
 
         Profile profile = null;
         try {
@@ -278,13 +269,9 @@ public final class LoginWithMicrosoftDialog extends JDialog {
                 profile = MicrosoftAuthAPI.getMcProfile(loginResponse.accessToken);
             } catch (IOException e1) {
                 LogManager.logStackTrace("Failed to get Minecraft profile", e1);
-                throw new Exception("Failed to get Minecraft profile");
             }
         }
 
-        if (profile == null) {
-            throw new Exception("Failed to get Minecraft profile");
-        }
 
         // add the account
         addAccount(oauthTokenResponse, xstsAuthResponse, loginResponse, profile);

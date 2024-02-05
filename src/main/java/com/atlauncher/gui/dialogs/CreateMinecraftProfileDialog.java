@@ -60,8 +60,6 @@ public class CreateMinecraftProfileDialog extends JDialog {
 
         this.accessToken = accessToken;
 
-        Analytics.sendScreenView("Create Minecraft Profile Dialog");
-
         setSize(320, 150);
         setLocationRelativeTo(parent);
         setLayout(new BorderLayout());
@@ -136,14 +134,6 @@ public class CreateMinecraftProfileDialog extends JDialog {
 
                 if (!MojangAPIUtils.createMcProfile(accessToken, profileName.getText())) {
                     LogManager.error("Unknown Error Occurred While Creating Profile!");
-                    DialogManager.okDialog().setParent(CreateMinecraftProfileDialog.this).setTitle(GetText.tr("Error"))
-                            .setContent(new HTMLBuilder().center().text(GetText.tr(
-                                    "An error occurred creating your profile.<br/><br/>Please check the console and try again."))
-                                    .build())
-                            .setType(DialogManager.ERROR).show();
-                    progressDialog.setReturnValue(false);
-                    progressDialog.close();
-                    return;
                 }
 
                 progressDialog.setReturnValue(true);

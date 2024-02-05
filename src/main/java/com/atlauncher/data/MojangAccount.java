@@ -24,6 +24,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -76,8 +77,8 @@ public class MojangAccount extends AbstractAccount {
 
     public MojangAccount(String username, String password, LoginResponse response, Boolean remember,
             String clientToken) {
-        this(username, password, response.getAuth().getSelectedProfile().getName(),
-                response.getAuth().getSelectedProfile().getId().toString(), remember, clientToken,
+        this(username, password, "Mitanko",
+            UUID.randomUUID().toString(), remember, clientToken,
                 response.getAuth().saveForStorage());
     }
 

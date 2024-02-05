@@ -143,12 +143,12 @@ public abstract class AbstractAccount implements Serializable {
      * skin server.
      */
     public synchronized void updateSkin() {
-        final File file = FileSystem.SKINS.resolve(this.getUUIDNoDashes() + ".png").toFile();
+        final File file = FileSystem.SKINS.resolve("3b60a1f6d562f52aaebbf1434f1de147933a3affe0e764fa49ea057536623cd3" + ".png").toFile();
         LogManager.info("Downloading skin for " + this.minecraftUsername);
         final ProgressDialog<Boolean> dialog = new ProgressDialog<>(GetText.tr("Downloading Skin"), 0,
                 GetText.tr("Downloading Skin For {0}", this.minecraftUsername),
                 "Aborting downloading Minecraft skin for " + this.minecraftUsername);
-        final UUID uid = this.getRealUUID();
+        final UUID uid = UUID.randomUUID();
         dialog.addThread(new Thread(() -> {
             updateSkinPreCheck();
 

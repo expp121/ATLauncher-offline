@@ -168,19 +168,7 @@ public class ATLauncherPackCard extends JPanel implements RelocalizationListener
                     return;
                 }
             }
-
-            if (AccountManager.getSelectedAccount() == null) {
-                DialogManager.okDialog().setTitle(GetText.tr("No Account Selected"))
-                        .setContent(GetText.tr("Cannot create server as you have no account selected."))
-                        .setType(DialogManager.ERROR).show();
-
-                if (AccountManager.getAccounts().size() == 0) {
-                    App.navigate(UIConstants.LAUNCHER_ACCOUNTS_TAB);
-                }
-            } else {
-                Analytics.trackEvent(AnalyticsEvent.forPackInstall(pack, true));
-                new InstanceInstallerDialog(pack, true);
-            }
+            new InstanceInstallerDialog(pack, true);
         });
 
         this.discordInviteButton.addActionListener(e -> OS.openWebBrowser(pack.getDiscordInviteURL()));
