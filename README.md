@@ -54,4 +54,7 @@ If you want to change the name you see in game, you can change the `username` an
 ## NOTE
 I don't own the ATLauncher, nor do I have any rights to it. This is just a modified version of the original ATLauncher, and I'm not responsible for any damage caused by using this modified version. Use at your own risk.
 
+Additionally, I don't encourage using this to bypass the checks, and I recommend buying the game if you like it.
+This project was made for educational purposes only.
+
 Original ATLauncher repository: https://github.com/ATLauncher/ATLauncher
